@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiran A · Portfolio</title>
+  <meta name="description" content="Kiran A — MCA student and aspiring web developer. Projects, skills, education, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121833;
+      --text: #e7ecff;
+      --muted: #a9b2d1;
+      --brand: #6c8bff; /* Blue */
+      --accent: #ff7ad9; /* Pink */
+      --ring: rgba(108,139,255,0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text); background: radial-gradient(1200px 800px at 80% -10%, rgba(108,139,255,0.12), transparent),
+               radial-gradient(900px 600px at 10% 0%, rgba(255,122,217,0.12), transparent), var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+
+    /* Nav */
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(11,16,32,0.85), rgba(11,16,32,0.55));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
+    .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); box-shadow: 0 0 0 6px var(--ring); }
+    nav ul { list-style: none; display: flex; gap: 18px; padding: 0; margin: 0; }
+    nav a { padding: 8px 12px; border-radius: 10px; color: var(--muted); font-weight: 500; }
+    nav a.active, nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .cta { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), var(--accent)); color: #0b1020; font-weight: 700; box-shadow: 0 10px 24px rgba(108,139,255,0.25); }
+
+    /* Sections */
+    section { padding: 80px 0; scroll-margin-top: 80px; }
+    .grid { display: grid; gap: 20px; }
+    .two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    @media (max-width: 900px){ .two { grid-template-columns: 1fr; } }
+
+    /* Hero */
+    .hero { padding: 90px 0 60px; }
+    .badge { display: inline-flex; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 999px; background: rgba(108,139,255,0.15); color: #cfe0ff; font-size: 13px; border: 1px solid rgba(255,255,255,0.08); }
+    h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.08; margin: 14px 0 10px; }
+    .lead { color: var(--muted); font-size: clamp(15px, 2.2vw, 18px); max-width: 720px; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .btn { border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 12px; color: var(--text); background: rgba(255,255,255,0.04); display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+    .btn:hover { background: rgba(255,255,255,0.08); }
+
+    /* Cards */
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px; box-shadow: 0 6px 30px rgba(0,0,0,0.22); }
+    .card h3 { margin: 0 0 10px; }
+    .card p { margin: 6px 0 0; color: var(--muted); }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(180deg, var(--brand), transparent); }
+    .tl-item { position: relative; margin: 18px 0; padding-left: 18px; }
+    .tl-item::before { content: ""; position: absolute; left: -2px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 6px var(--ring); }
+    .subtle { color: var(--muted); font-size: 14px; }
+
+    /* Chips */
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+    .chip { padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); font-weight: 600; color: #dfe6ff; }
+
+    /* Projects */
+    .project { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .project h4 { margin: 0; }
+
+    /* Lists */
+    ul.clean { list-style: none; padding: 0; margin: 0; }
+    ul.clean li { padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); margin-bottom: 10px; }
+
+    /* Footer */
+    footer { padding: 26px 0 60px; color: var(--muted); text-align: center; }
+
+    /* Reveal */
+    [data-reveal]{ opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    [data-reveal].visible{ opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="dot"></span> <span>Kiran A</span></div>
+      <nav>
+        <ul>
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certs">Certificates</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#contact"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container grid two">
+      <div data-reveal>
+        <span class="badge"><i class="fa-solid fa-laptop-code"></i> MCA Student · Web Developer</span>
+        <h1>Building clean, scalable web apps that solve real problems.</h1>
+        <p class="lead">Innovative and results-driven professional eager to leverage modern tech to create impactful solutions. Passionate about learning, collaboration, and delivering real value for forward-thinking teams.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#projects"><i class="fa-solid fa-bolt"></i> View Projects</a>
+          <a class="btn" href="KIRAN23.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+          <a class="btn" href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="card" style="height:100%; display:grid; place-items:center; text-align:center;">
+          <i class="fa-solid fa-user-astronaut" style="font-size:70px; background: linear-gradient(135deg, var(--brand), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;"></i>
+          <p class="subtle">Telugu · Tamil · English</p>
+          <p class="subtle">Based in Hosur, Krishnagiri, Tamil Nadu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container grid two">
+      <div data-reveal>
+        <h2>About Me</h2>
+        <p class="subtle">I enjoy building web applications end-to-end — from clean, accessible UIs to efficient back-end APIs. I’m currently pursuing <strong>MCA</strong> at Adhiyamaan College of Engineering (2026) and actively work on projects that help people collaborate and learn.</p>
+        <div class="chips" style="margin-top:12px">
+          <span class="chip">Problem Solver</span>
+          <span class="chip">Team Player</span>
+          <span class="chip">Continuous Learner</span>
+        </div>
+      </div>
+      <div class="grid" data-reveal>
+        <div class="card">
+          <h3>Quick Info</h3>
+          <ul class="clean">
+            <li><i class="fa-solid fa-envelope"></i> &nbsp; kiran.mca2024@adhiyamaan.in</li>
+            <li><i class="fa-solid fa-phone"></i> &nbsp; +91 9080306501</li>
+            <li><i class="fa-solid fa-location-dot"></i> &nbsp; Hosur, Krishnagiri, Tamil Nadu</li>
+            <li><i class="fa-solid fa-briefcase"></i> &nbsp; Looking for Web Developer Intern / Junior roles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <h2>Education</h2>
+      <div class="timeline" data-reveal>
+        <div class="tl-item">
+          <h3>MCA — Adhiyamaan College of Engineering</h3>
+          <div class="subtle">2024 – 2026 · Pursuing</div>
+        </div>
+        <div class="tl-item">
+          <h3>B.Sc. Computer Science — Krishna Arts & Science College, Krishnagiri</h3>
+          <div class="subtle">2019 – 2024 · 74%</div>
+        </div>
+        <div class="tl-item">
+          <h3>H.S.C — Govt. Boys Higher Secondary School, Bagalur</h3>
+          <div class="subtle">2021 · 58.85%</div>
+        </div>
+        <div class="tl-item">
+          <h3>S.S.L.C — Govt. Boys Higher Secondary School, Bagalur</h3>
+          <div class="subtle">2019 · 43.4%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="grid two">
+        <div class="card" data-reveal>
+          <h3>Programming</h3>
+          <div class="chips" style="margin-top:8px">
+            <span class="chip">Python</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">PHP</span>
+            <span class="chip">Node.js</span>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Web & Markup</h3>
+          <div class="chips" style="margin-top:8px">
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS</span>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Databases</h3>
+          <div class="chips" style="margin-top:8px">
+            <span class="chip">MySQL</span>
+            <span class="chip">MongoDB</span>
+          </div>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Interests</h3>
+          <div class="chips" style="margin-top:8px">
+            <span class="chip">Web Development</span>
+            <span class="chip">Algorithms</span>
+            <span class="chip">Team Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="grid two">
+        <div class="card project" data-reveal>
+          <div>
+            <h3>Smart Study Group Matcher</h3>
+            <p class="subtle">Web Application · Matching Algorithm · Collaboration</p>
+          </div>
+          <p>A web platform that connects students for collaborative study based on subjects, time availability, and learning preferences (Quiet, Interactive, Tutor/Helper). Uses a weekly scheduler and prevents duplicate groupings. Features join/leave groups, contact access, and feedback.</p>
+          <ul class="clean">
+            <li>Built with Node.js, Express, MongoDB, and EJS UI</li>
+            <li>Profile form with subjects, group size, availability</li>
+            <li>Matching algorithm for compatible groups</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">EJS</span>
+          </div>
+        </div>
+        <div class="card project" data-reveal>
+          <div>
+            <h3>ATS Resume Matcher</h3>
+            <p class="subtle">Web Application · Resume Scoring</p>
+          </div>
+          <p>Compares resumes with job descriptions using ATS-style keyword analysis to compute a match score and highlight relevant skills and experience. Helps job seekers optimize their resumes for better shortlisting.</p>
+          <ul class="clean">
+            <li>Keyword extraction and scoring</li>
+            <li>Match score with highlights of strengths & gaps</li>
+            <li>Simple, responsive UI with results download</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">EJS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certs">
+    <div class="container">
+      <h2>Certificates</h2>
+      <ul class="clean" data-reveal>
+        <li><strong>Data Science using Python</strong> — Networkz Systems (Dec 2024)</li>
+        <li><strong>Concepts on Basics Python</strong> — Coursera (Apr 2025)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container grid two">
+      <div data-reveal>
+        <h2>Let’s work together</h2>
+        <p class="subtle">Open to internships and junior developer roles. Reach out via email or phone — I’ll respond quickly.</p>
+        <div class="card">
+          <ul class="clean">
+            <li><i class="fa-solid fa-envelope"></i> &nbsp; kiran.mca2024@adhiyamaan.in</li>
+            <li><i class="fa-solid fa-phone"></i> &nbsp; +91 9080306501</li>
+            <li><i class="fa-solid fa-location-dot"></i> &nbsp; Hosur, Krishnagiri, Tamil Nadu</li>
+          </ul>
+        </div>
+      </div>
+      <div data-reveal>
+        <form class="card">
+          <h3>Message Me</h3>
+          <input type="text" placeholder="Your Name" style="padding:10px; margin-bottom:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:var(--text)">
+          <input type="email" placeholder="Your Email" style="padding:10px; margin-bottom:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:var(--text)">
+          <textarea placeholder="Your Message" rows="5" style="padding:10px; margin-bottom:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:var(--text)"></textarea>
+          <button class="cta" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Kiran A. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, {threshold: .1});
+    revealEls.forEach(el=>observer.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((s) => { if(window.scrollY >= s.offsetTop - 90){ current = s.id; } });
+      navLinks.forEach((l) => { l.classList.remove("active"); if(l.getAttribute("href") === "#" + current){ l.classList.add("active"); } });
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
