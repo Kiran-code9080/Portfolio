@@ -1,423 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kiran A · Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiran – Portfolio</title>
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Style -->
-  <style>
-    :root {
-      --bg: #060b1a;
-      --card: rgba(255,255,255,0.06);
-      --text: #eef1ff;
-      --muted: #a9b2d1;
-      --brand: #6c8bff;
-      --accent: #ff7ad9;
-      --glass: rgba(255,255,255,0.14);
-      --blur: blur(14px);
-      --glow: 0 0 25px rgba(108,139,255,0.55);
-    }
-    *{box-sizing:border-box;}
-    body {
-      margin:0; color:var(--text); font-family:Inter, sans-serif;
-      background: radial-gradient(circle at 20% 20%, rgba(108,139,255,0.25), transparent 60%),
-                  radial-gradient(circle at 80% 10%, rgba(255,122,217,0.30), transparent 60%),
-                  var(--bg);
-      overflow-x:hidden;
-    }
-    .container { width:min(1150px,92%); margin:auto; }
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    /* Header */
-    header {
-      position:sticky; top:0; z-index:50;
-      background:rgba(5,10,25,0.55);
-      backdrop-filter:var(--blur);
-      border-bottom:1px solid rgba(255,255,255,0.05);
-    }
-    .nav {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:16px 0;
-    }
-    .brand {
-      font-size:20px; font-weight:700; display:flex; align-items:center; gap:10px;
-    }
-    .brand .dot {
-      width:12px; height:12px; border-radius:50%;
-      background:linear-gradient(135deg,var(--brand),var(--accent));
-      box-shadow:0 0 12px var(--accent);
-    }
-    nav ul { display:flex; gap:18px; list-style:none; padding:0; margin:0; }
-    nav a {
-      padding:8px 14px; border-radius:10px;
-      color:var(--muted); font-weight:500; transition:.25s;
-    }
-    nav a:hover, nav a.active {
-      background:rgba(255,255,255,0.08); color:white;
-    }
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-    /* Buttons */
-    .cta {
-      padding:10px 18px; border-radius:12px;
-      background:linear-gradient(135deg,var(--brand),var(--accent));
-      color:#0d0f1a; font-weight:700; display:inline-flex; align-items:center; gap:10px;
-      box-shadow:0 8px 22px rgba(108,139,255,0.35);
-      transition:.3s;
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("A8GY5Y4s-MORVV50t"); /* Public Key */
+        })();
+    </script>
+
+    <!-- ===========================
+         ALL-IN-ONE CSS (STYLE)
+    =========================== -->
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0d0d0d;
+    color: white;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 80px 7%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* PRELOADER */
+#preloader {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #555;
+    border-top-color: #00d5ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* HEADER */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+    z-index: 1000;
+    transition: .3s;
+}
+.header.scrolled {
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(10px);
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+}
+.nav-menu a.active {
+    color: #00d5ff;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+}
+
+/* HERO */
+.home {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    text-align: center;
+}
+.home h1 span {
+    color: #00d5ff;
+}
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #00d5ff;
+    color: #000;
+    border-radius: 5px;
+}
+
+/* ABOUT */
+.about-box {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+.about-box img {
+    width: 180px;
+    border-radius: 10px;
+}
+
+/* SKILLS */
+.filters {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.filter-btn {
+    padding: 10px 18px;
+    background: #111;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.filter-btn.active {
+    background: #00d5ff;
+    color: black;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+.skill-card {
+    padding: 20px;
+    background: #111;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: #111;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 12px;
+}
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    background: rgba(0,0,0,.7);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+}
+.close-btn {
+    float: right;
+    cursor: pointer;
+}
+
+/* ACHIEVEMENTS */
+.achievement-card {
+    background: #111;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+.achievement-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* CONTACT */
+#contact-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#contact-form input,
+#contact-form textarea {
+    background: #111;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* BACK TO TOP */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 25px;
+    padding: 12px;
+    background: #00d5ff;
+    border-radius: 50%;
+    color: black;
+    display: none;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        right: 0;
+        top: 70px;
+        width: 200px;
+        padding: 20px;
     }
-    .cta:hover { transform:translateY(-3px) scale(1.03); box-shadow:var(--glow); }
+    .nav-menu.active { display: flex; }
+    .hamburger { display: flex; }
+    .about-box { flex-direction: column; text-align: center; }
+}
+</style>
 
-    .btn {
-      padding:10px 14px; border-radius:12px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.05);
-      color:white; font-weight:600; transition:.25s;
-      display:inline-flex; gap:10px; align-items:center;
-    }
-    .btn:hover { background:rgba(255,255,255,0.12); }
-
-    section { padding:90px 0; scroll-margin-top:90px; }
-    h1, h2, h3 { margin:0; }
-    h2 { font-size:32px; margin-bottom:20px; }
-
-    /* Grid */
-    .grid { display:grid; gap:25px; }
-    .two { grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); }
-
-    /* Hero */
-    .hero h1 { font-size:clamp(36px,6vw,62px); line-height:1.1; }
-    .lead { font-size:18px; max-width:720px; color:var(--muted); }
-
-    .badge {
-      padding:6px 14px; border-radius:999px;
-      background:rgba(108,139,255,0.20);
-      border:1px solid rgba(255,255,255,0.12);
-      color:#e3e9ff; font-size:14px;
-      display:inline-flex; align-items:center; gap:8px;
-    }
-
-    /* Cards */
-    .card {
-      background:var(--card); border-radius:18px;
-      padding:22px;
-      border:1px solid rgba(255,255,255,0.10);
-      backdrop-filter:var(--blur);
-      transition:.3s; box-shadow:0 0 0 transparent;
-    }
-    .card:hover { transform:translateY(-4px); box-shadow:var(--glow); }
-
-    /* Chips */
-    .chips { display:flex; flex-wrap:wrap; gap:10px; }
-    .chip {
-      padding:8px 14px; border-radius:999px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
-      font-weight:600; font-size:14px;
-    }
-
-    /* Timeline */
-    .timeline { position:relative; padding-left:24px; }
-    .timeline::before {
-      content:""; position:absolute; left:10px; top:6px; bottom:6px;
-      width:2px; background:linear-gradient(180deg,var(--brand),transparent);
-    }
-    .tl-item {
-      padding-left:18px; margin:22px 0; position:relative;
-    }
-    .tl-item::before {
-      content:""; position:absolute; left:-1px; top:6px;
-      width:12px; height:12px; border-radius:50%;
-      background:var(--brand); box-shadow:0 0 10px var(--brand);
-    }
-
-    .subtle { color:var(--muted); font-size:15px; }
-
-    /* Clean List */
-    ul.clean { list-style:none; padding:0; }
-    ul.clean li {
-      padding:12px 14px; margin-bottom:10px;
-      border-radius:12px; background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    footer { text-align:center; color:var(--muted); padding:50px 0; }
-
-    /* Reveal Animation */
-    [data-reveal] { opacity:0; transform:translateY(18px); transition:.8s; }
-    [data-reveal].visible { opacity:1; transform:translateY(0); }
-  </style>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot"></span> Kiran A</div>
+<!-- PRELOADER -->
+<div id="preloader"><div class="loader"></div></div>
 
-      <nav>
-        <ul>
-          <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certs">Certificates</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<!-- HEADER -->
+<header class="header">
+    <a class="logo">Kiran</a>
 
-      <a class="cta" href="#contact"><i class="fa-solid fa-paper-plane"></i> Hire Me</a>
+    <nav class="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="home">
+    <div>
+        <h1>Hello, I'm <span>Kiran</span></h1>
+        <h2 class="typing-effect"></h2>
+        <p>Full Stack Developer | MERN Stack | UI/UX Designer</p>
+        <a href="#contact" class="btn">Hire Me</a>
     </div>
-  </header>
+</section>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="container grid two">
-      
-      <div data-reveal>
-        <span class="badge"><i class="fa-solid fa-laptop-code"></i> MCA Student · Web Developer</span>
-        <h1>Building clean, scalable web apps that solve real problems.</h1>
-        <p class="lead">Innovative and results-driven professional eager to leverage modern tech to create impactful solutions.</p>
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title">About Me</h2>
 
-        <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
-          <a class="cta" href="#projects"><i class="fa-solid fa-bolt"></i> View Projects</a>
-          <a class="btn" href="KIRAN23.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
-          <a class="btn" href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-        </div>
-      </div>
-
-      <div data-reveal>
-        <div class="card" style="text-align:center;">
-          <i class="fa-solid fa-user-astronaut" style="font-size:78px; background:linear-gradient(135deg,var(--brand),var(--accent)); -webkit-background-clip:text; color:transparent;"></i>
-          <p class="subtle">Telugu · Tamil · English</p>
-          <p class="subtle">Based in Hosur, Tamil Nadu</p>
-        </div>
-      </div>
-
+    <div class="about-box">
+        <img src="images/profile.jpg">
+        <p>
+            I am a passionate developer who enjoys building modern and responsive
+            web applications. I specialize in MERN Stack and love UI/UX design.
+        </p>
     </div>
-  </section>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container grid two">
-      <div data-reveal>
-        <h2>About Me</h2>
-        <p class="subtle">I enjoy building web applications end-to-end — from clean UIs to efficient back-end APIs.</p>
-        <div class="chips" style="margin-top:12px;">
-          <span class="chip">Problem Solver</span>
-          <span class="chip">Team Player</span>
-          <span class="chip">Continuous Learner</span>
-        </div>
-      </div>
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="section-title">Skills</h2>
 
-      <div data-reveal>
-        <div class="card">
-          <h3>Quick Info</h3>
-          <ul class="clean">
-            <li><i class="fa-solid fa-envelope"></i> &nbsp; kiran.mca2024@adhiyamaan.in</li>
-            <li><i class="fa-solid fa-phone"></i> &nbsp; +91 9080306501</li>
-            <li><i class="fa-solid fa-location-dot"></i> &nbsp; Hosur, Tamil Nadu</li>
-            <li><i class="fa-solid fa-briefcase"></i> &nbsp; Looking for Web Dev Intern / Junior roles</li>
-          </ul>
-        </div>
-      </div>
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+        <button class="filter-btn" data-filter="database">Database</button>
     </div>
-  </section>
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="container">
-      <h2>Education</h2>
-      <div class="timeline" data-reveal>
-        
-        <div class="tl-item">
-          <h3>MCA — Adhiyamaan College of Engineering</h3>
-          <p class="subtle">2024 – 2026 · Pursuing</p>
-        </div>
-
-        <div class="tl-item">
-          <h3>B.Sc Computer Science — Krishna Arts & Science College</h3>
-          <p class="subtle">2019 – 2024 · 74%</p>
-        </div>
-
-        <div class="tl-item">
-          <h3>H.S.C — Govt. Boys Hr. Sec. School, Bagalur</h3>
-          <p class="subtle">2021 · 58.85%</p>
-        </div>
-
-        <div class="tl-item">
-          <h3>S.S.L.C — Govt. Boys Hr. Sec. School, Bagalur</h3>
-          <p class="subtle">2019 · 43.4%</p>
-        </div>
-
-      </div>
+    <div class="skills-grid">
+        <div class="skill-card" data-category="frontend">HTML</div>
+        <div class="skill-card" data-category="frontend">CSS</div>
+        <div class="skill-card" data-category="frontend">JavaScript</div>
+        <div class="skill-card" data-category="backend">Node.js</div>
+        <div class="skill-card" data-category="backend">Express.js</div>
+        <div class="skill-card" data-category="database">MongoDB</div>
     </div>
-  </section>
+</section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <h2>Skills</h2>
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
 
-      <div class="grid two">
-        
-        <div class="card" data-reveal>
-          <h3>Programming</h3>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">JavaScript</span>
-            <span class="chip">PHP</span><span class="chip">Node.js</span>
-          </div>
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <img src="images/project1.jpg">
+            <h3>Project One</h3>
+            <p>Modern UI project built with React.</p>
         </div>
 
-        <div class="card" data-reveal>
-          <h3>Web & Markup</h3>
-          <div class="chips">
-            <span class="chip">HTML5</span><span class="chip">CSS</span>
-          </div>
+        <div class="project-card">
+            <img src="images/project2.jpg">
+            <h3>Project Two</h3>
+            <p>Full Stack MERN Application.</p>
         </div>
-
-        <div class="card" data-reveal>
-          <h3>Databases</h3>
-          <div class="chips">
-            <span class="chip">MySQL</span><span class="chip">MongoDB</span>
-          </div>
-        </div>
-
-        <div class="card" data-reveal>
-          <h3>Interests</h3>
-          <div class="chips">
-            <span class="chip">Web Development</span>
-            <span class="chip">Algorithms</span>
-            <span class="chip">Team Collaboration</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-
-      <div class="grid two">
-
-        <div class="card" data-reveal>
-          <h3>Smart Study Group Matcher</h3>
-          <p class="subtle">Web App · Matching Algorithm</p>
-          <p>A platform that connects students based on subjects, time, and learning style.</p>
-
-          <ul class="clean">
-            <li>Node.js, Express, MongoDB</li>
-            <li>Weekly scheduler + match algorithm</li>
-            <li>Join/leave groups, feedback system</li>
-          </ul>
-
-          <div class="chips">
-            <span class="chip">Node.js</span>
-            <span class="chip">MongoDB</span>
-            <span class="chip">Express</span>
-            <span class="chip">EJS</span>
-          </div>
-        </div>
-
-        <div class="card" data-reveal>
-          <h3>ATS Resume Matcher</h3>
-          <p class="subtle">Resume Scoring Tool</p>
-          <p>Compares resumes with job descriptions using keyword-based ATS logic.</p>
-
-          <ul class="clean">
-            <li>Score calculation & keyword extraction</li>
-            <li>Highlights strengths + missing skills</li>
-            <li>Downloadable results UI</li>
-          </ul>
-
-          <div class="chips">
-            <span class="chip">Node.js</span>
-            <span class="chip">MongoDB</span>
-            <span class="chip">Express</span>
-            <span class="chip">EJS</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATES -->
-  <section id="certs">
-    <div class="container">
-      <h2>Certificates</h2>
-
-      <ul class="clean card" data-reveal>
-        <li><strong>Data Science using Python</strong> — Networkz Systems (Dec 2024)</li>
-        <li><strong>Basic Python Concepts</strong> — Coursera (Apr 2025)</li>
-      </ul>
 
     </div>
-  </section>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container grid two">
-      
-      <div data-reveal>
-        <h2>Let’s work together</h2>
-        <p class="subtle">Open to internships and junior developer roles.</p>
-
-        <div class="card">
-          <ul class="clean">
-            <li><i class="fa-solid fa-envelope"></i> &nbsp; kiran.mca2024@adhiyamaan.in</li>
-            <li><i class="fa-solid fa-phone"></i> &nbsp; +91 9080306501</li>
-            <li><i class="fa-solid fa-location-dot"></i> &nbsp; Hosur, Tamil Nadu</li>
-          </ul>
-        </div>
-      </div>
-
-      <div data-reveal>
-        <form class="card">
-          <h3>Message Me</h3>
-          <input type="text" placeholder="Your Name" class="input">
-          <input type="email" placeholder="Your Email" class="input">
-          <textarea rows="5" placeholder="Your Message" class="input"></textarea>
-          <button class="cta">Send Message</button>
-        </form>
-      </div>
-
+<!-- PROJECT MODAL -->
+<div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <img id="modal-img">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
     </div>
-  </section>
+</div>
 
-  <footer>
-    © <span id="year"></span> Kiran A. All rights reserved.
-  </footer>
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+    <h2 class="section-title">Achievements</h2>
+    <div class="achievement-card">
+        <img src="images/award1.jpg">
+        <p>Certificate Example</p>
+    </div>
+</section>
 
-  <!-- Scripts -->
-  <script>
-    // Reveal
-    const revealEls = document.querySelectorAll('[data-reveal]');
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible")}})
-    },{threshold:.1});
-    revealEls.forEach(el=>observer.observe(el));
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">Contact Me</h2>
 
-    // Active Highlight
-    const sections=document.querySelectorAll("section");
-    const links=document.querySelectorAll("nav a");
-    window.addEventListener("scroll",()=>{
-      let cur="";
-      sections.forEach(s=>{if(scrollY>=s.offsetTop-100){cur=s.id}});
-      links.forEach(l=>{l.classList.remove("active"); if(l.getAttribute("href")==="#"+cur) l.classList.add("active")});
+    <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <textarea name="message" placeholder="Your Message" required></textarea>
+
+        <button class="btn" type="submit">Send Message</button>
+
+        <p id="form-status"></p>
+    </form>
+</section>
+
+<button class="back-to-top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- ===========================
+         ALL-IN-ONE JAVASCRIPT
+    =========================== -->
+<script>
+// PRELOADER
+window.onload = () => {
+    document.getElementById("preloader").style.display = "none";
+};
+
+// MOBILE MENU
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});
+
+// SCROLL EFFECTS
+window.addEventListener("scroll", () => {
+    document.querySelector(".header").classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// TYPING EFFECT
+new Typed(".typing-effect", {
+    strings: ["Full Stack Developer", "MERN Stack Developer", "UI/UX Designer"],
+    typeSpeed: 80,
+    backSpeed: 50,
+    loop: true
+});
+
+// SKILLS FILTER
+document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+
+        document.querySelectorAll(".skill-card").forEach(card => {
+            card.style.display = (filter === "all" || card.dataset.category === filter) ? "block" : "none";
+        });
     });
+});
 
-    // Footer year
-    document.getElementById("year").textContent=new Date().getFullYear();
-  </script>
+// CONTACT FORM EMAILJS
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const SERVICE_ID = "service_753xgur";
+    const TEMPLATE_ID = "template_edmn3me";
+    const PUBLIC_KEY = "A8GY5Y4s-MORVV50t";
+
+    const formStatus = document.getElementById("form-status");
+    formStatus.textContent = "Sending...";
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this, PUBLIC_KEY)
+        .then(() => {
+            formStatus.textContent = "Message sent successfully!";
+            formStatus.style.color = "#22c55e";
+            this.reset();
+        })
+        .catch(error => {
+            formStatus.textContent = "Failed to send message!";
+            formStatus.style.color = "#ff4444";
+            console.error(error);
+        });
+});
+
+// BACK TO TOP
+const backToTop = document.querySelector(".back-to-top");
+window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 400 ? "block" : "none";
+});
+backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+</script>
 
 </body>
 </html>
