@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,32 @@
     <title>Kiran A. | MCA Student & Web Developer</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- AOS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
     <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-    <!-- EmailJS - Current Browser SDK -->
+    <!-- EmailJS Browser SDK v4 -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-<script>
-    emailjs.init({
-        publicKey: "A8GY5Y4s-MORVV50t"
-    });
-</script>
+    <!-- EmailJS Initialization -->
+    <script>
+        emailjs.init({
+            publicKey: "A8GY5Y4s-MORVV50t"
+        });
+    </script>
 
     <style>
 
@@ -47,6 +52,10 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -71,7 +80,7 @@
             color: var(--primary);
         }
 
-        /* HEADER */
+        /* ================= HEADER ================= */
 
         header {
             position: fixed;
@@ -114,7 +123,11 @@
             color: var(--primary);
         }
 
-        /* HERO */
+        nav a.active {
+            color: var(--primary);
+        }
+
+        /* ================= HERO ================= */
 
         .hero {
             height: 100vh;
@@ -144,19 +157,13 @@
             margin-bottom: 30px;
         }
 
-        /* ABOUT */
+        /* ================= ABOUT ================= */
 
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-        }
-
-        .profile-img {
-            width: 100%;
-            border-radius: 24px;
-            border: 1px solid var(--border);
         }
 
         .academic-card {
@@ -167,7 +174,7 @@
             margin-bottom: 20px;
         }
 
-        /* SKILLS */
+        /* ================= SKILLS ================= */
 
         .skills-grid {
             display: grid;
@@ -195,7 +202,7 @@
             margin-bottom: 10px;
         }
 
-        /* PROJECTS */
+        /* ================= PROJECTS ================= */
 
         .project-card {
             background: var(--card-bg);
@@ -208,7 +215,7 @@
 
         .project-card:hover {
             border-color: var(--primary);
-            transform: scale(1.02);
+            transform: translateY(-5px);
         }
 
         .project-body {
@@ -224,7 +231,7 @@
             text-transform: uppercase;
         }
 
-        /* CONTACT */
+        /* ================= CONTACT ================= */
 
         .contact-grid {
             display: grid;
@@ -259,6 +266,12 @@
             border-radius: 10px;
             color: white;
             margin-bottom: 20px;
+            outline: none;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: var(--primary);
         }
 
         .btn {
@@ -286,7 +299,10 @@
         #form-status {
             margin-top: 15px;
             font-weight: 600;
+            min-height: 25px;
         }
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 768px) {
 
@@ -306,18 +322,20 @@
             section {
                 padding: 80px 6%;
             }
+
         }
 
     </style>
+
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- ================= HEADER ================= -->
 
     <header id="header">
 
-        <a href="#" class="logo">
+        <a href="#home" class="logo">
             KIRAN<span>.A</span>
         </a>
 
@@ -332,7 +350,7 @@
     </header>
 
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
 
     <section id="home" class="hero">
 
@@ -360,7 +378,7 @@
 
             <div style="font-size: 1.5rem; margin-bottom: 30px;">
                 I am a
-                <span id="typed" style="color: var(--primary);"></span>
+                <span id="typed"></span>
             </div>
 
             <a href="#projects" class="btn">
@@ -372,7 +390,7 @@
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- ================= ABOUT ================= -->
 
     <section id="about">
 
@@ -400,7 +418,6 @@
 
                 </div>
 
-
                 <div class="academic-card">
 
                     <h4 style="color: var(--primary);">
@@ -416,7 +433,6 @@
                     </small>
 
                 </div>
-
 
                 <div class="academic-card">
 
@@ -454,24 +470,13 @@
                 ">
 
                     <div class="academic-card" style="text-align: center;">
-
                         <h3>2+</h3>
-
-                        <p>
-                            Live Projects
-                        </p>
-
+                        <p>Live Projects</p>
                     </div>
 
-
                     <div class="academic-card" style="text-align: center;">
-
                         <h3>MCA</h3>
-
-                        <p>
-                            Post-Grad
-                        </p>
-
+                        <p>Post-Grad</p>
                     </div>
 
                 </div>
@@ -483,7 +488,7 @@
     </section>
 
 
-    <!-- SKILLS -->
+    <!-- ================= SKILLS ================= -->
 
     <section id="skills" style="background: rgba(255,255,255,0.01);">
 
@@ -494,63 +499,47 @@
         <div class="skills-grid">
 
             <div class="skill-item" data-aos="zoom-in">
-
                 <i class="fab fa-python"></i>
-
                 <h4>Python</h4>
-
                 <p>Advanced Logic</p>
-
             </div>
-
 
             <div class="skill-item"
                  data-aos="zoom-in"
                  data-aos-delay="100">
 
                 <i class="fab fa-node-js"></i>
-
                 <h4>Node.js</h4>
-
                 <p>Server-side</p>
 
             </div>
-
 
             <div class="skill-item"
                  data-aos="zoom-in"
                  data-aos-delay="200">
 
                 <i class="fas fa-code"></i>
-
                 <h4>JavaScript</h4>
-
                 <p>Interactive UI</p>
 
             </div>
-
 
             <div class="skill-item"
                  data-aos="zoom-in"
                  data-aos-delay="300">
 
                 <i class="fas fa-database"></i>
-
                 <h4>MongoDB / MySQL</h4>
-
                 <p>Database Mgmt</p>
 
             </div>
-
 
             <div class="skill-item"
                  data-aos="zoom-in"
                  data-aos-delay="400">
 
                 <i class="fab fa-html5"></i>
-
                 <h4>HTML5 / CSS3</h4>
-
                 <p>Modern Layouts</p>
 
             </div>
@@ -560,7 +549,7 @@
     </section>
 
 
-    <!-- PROJECTS -->
+    <!-- ================= PROJECTS ================= -->
 
     <section id="projects">
 
@@ -573,8 +562,6 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         ">
-
-            <!-- PROJECT 1 -->
 
             <div class="project-card" data-aos="fade-up">
 
@@ -619,8 +606,6 @@
 
             </div>
 
-
-            <!-- PROJECT 2 -->
 
             <div class="project-card"
                  data-aos="fade-up"
@@ -672,7 +657,7 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- ================= CONTACT ================= -->
 
     <section id="contact">
 
@@ -683,7 +668,6 @@
                 <h2 class="section-title">
                     Get In <span>Touch</span>
                 </h2>
-
 
                 <div class="info-item">
 
@@ -703,7 +687,6 @@
 
                 </div>
 
-
                 <div class="info-item">
 
                     <i class="fas fa-phone"></i>
@@ -722,7 +705,6 @@
 
                 </div>
 
-
                 <div class="info-item">
 
                     <i class="fas fa-location-dot"></i>
@@ -740,7 +722,6 @@
                     </div>
 
                 </div>
-
 
                 <p style="
                     margin-top: 30px;
@@ -771,6 +752,12 @@
                     required
                 >
 
+                <input
+                    type="hidden"
+                    name="time"
+                    id="email-time"
+                >
+
                 <textarea
                     name="message"
                     rows="5"
@@ -795,7 +782,7 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
 
     <footer style="
         text-align: center;
@@ -815,51 +802,126 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
 
+    <!-- ================= PAGE JAVASCRIPT ================= -->
+
     <script>
 
         /* =========================
            AOS
         ========================= */
 
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+        if (typeof AOS !== "undefined") {
+
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+        }
 
 
         /* =========================
            TYPED.JS
         ========================= */
 
-        new Typed("#typed", {
+        if (typeof Typed !== "undefined") {
 
-            strings: [
-                "MCA Student",
-                "Full Stack Developer",
-                "Python Enthusiast",
-                "Problem Solver"
-            ],
+            const typedElement =
+                document.getElementById("typed");
 
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true
+            if (typedElement) {
 
-        });
+                new Typed("#typed", {
+
+                    strings: [
+                        "MCA Student",
+                        "Full Stack Developer",
+                        "Python Enthusiast",
+                        "Problem Solver"
+                    ],
+
+                    typeSpeed: 50,
+                    backSpeed: 30,
+                    backDelay: 1000,
+                    loop: true
+
+                });
+
+            }
+
+        }
 
 
         /* =========================
            HEADER SCROLL
         ========================= */
 
-        window.addEventListener("scroll", function () {
+        const header =
+            document.getElementById("header");
 
-            document
-                .getElementById("header")
-                .classList
-                .toggle(
+        if (header) {
+
+            window.addEventListener("scroll", function () {
+
+                header.classList.toggle(
                     "scrolled",
                     window.scrollY > 50
                 );
+
+            });
+
+        }
+
+
+        /* =========================
+           ACTIVE NAVIGATION
+        ========================= */
+
+        const sections =
+            document.querySelectorAll("section[id]");
+
+        const navLinks =
+            document.querySelectorAll("nav a");
+
+        window.addEventListener("scroll", function () {
+
+            let current = "";
+
+            sections.forEach(function (section) {
+
+                const sectionTop =
+                    section.offsetTop - 150;
+
+                const sectionBottom =
+                    sectionTop + section.offsetHeight;
+
+                if (
+                    window.scrollY >= sectionTop &&
+                    window.scrollY < sectionBottom
+                ) {
+
+                    current =
+                        section.getAttribute("id");
+
+                }
+
+            });
+
+            navLinks.forEach(function (link) {
+
+                link.classList.remove("active");
+
+                if (
+                    link.getAttribute("href") ===
+                    "#" + current
+                ) {
+
+                    link.classList.add("active");
+
+                }
+
+            });
 
         });
 
@@ -871,102 +933,162 @@
         const contactForm =
             document.getElementById("contact-form");
 
-        const status =
+        const formStatus =
             document.getElementById("form-status");
 
         const submitBtn =
             document.getElementById("submit-btn");
 
-
-        contactForm.addEventListener("submit", function (e) {
-
-            e.preventDefault();
+        const emailTime =
+            document.getElementById("email-time");
 
 
-            /* Disable button */
+        if (contactForm) {
 
-            submitBtn.disabled = true;
+            contactForm.addEventListener(
+                "submit",
+                async function (e) {
 
-            submitBtn.innerText = "Sending...";
-
-
-            status.innerText = "Sending your message...";
-
-            status.style.color = "var(--primary)";
+                    e.preventDefault();
 
 
-            /*
-             * EmailJS credentials
-             */
-            const SERVICE_ID = "service_753xgur";
-            const TEMPLATE_ID = "template_edmn3me";
-            const PUBLIC_KEY = "A8GY5Y4s-MORVV50t";
+                    /* Check EmailJS */
+
+                    if (
+                        typeof emailjs === "undefined"
+                    ) {
+
+                        console.error(
+                            "EmailJS SDK is not loaded."
+                        );
+
+                        formStatus.textContent =
+                            "✕ Email service is unavailable.";
+
+                        formStatus.style.color =
+                            "#ef4444";
+
+                        return;
+
+                    }
 
 
-            /*
-             * Send form
-             */
+                    /* Set current time */
 
-            emailjs.sendForm(
-                SERVICE_ID,
-                TEMPLATE_ID,
-                contactForm,
-                {
-                    publicKey: PUBLIC_KEY
+                    if (emailTime) {
+
+                        emailTime.value =
+                            new Date().toLocaleString();
+
+                    }
+
+
+                    /* Button */
+
+                    submitBtn.disabled = true;
+
+                    submitBtn.textContent =
+                        "Sending...";
+
+
+                    formStatus.textContent =
+                        "Sending your message...";
+
+                    formStatus.style.color =
+                        "var(--primary)";
+
+
+                    try {
+
+                        /*
+                         * EmailJS Browser SDK v4
+                         *
+                         * Public key was already
+                         * initialized above.
+                         */
+
+                        const response =
+                            await emailjs.sendForm(
+                                "service_753xgur",
+                                "template_edmn3me",
+                                contactForm
+                            );
+
+
+                        console.log(
+                            "EmailJS SUCCESS:",
+                            response
+                        );
+
+
+                        formStatus.textContent =
+                            "✓ Message sent successfully!";
+
+                        formStatus.style.color =
+                            "#22c55e";
+
+
+                        contactForm.reset();
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "EmailJS ERROR:",
+                            error
+                        );
+
+
+                        console.error(
+                            "Status:",
+                            error?.status
+                        );
+
+
+                        console.error(
+                            "Text:",
+                            error?.text
+                        );
+
+
+                        /*
+                         * Display actual EmailJS
+                         * error instead of hiding it.
+                         */
+
+                        if (error?.text) {
+
+                            formStatus.textContent =
+                                "✕ " + error.text;
+
+                        } else {
+
+                            formStatus.textContent =
+                                "✕ Failed to send message.";
+
+                        }
+
+
+                        formStatus.style.color =
+                            "#ef4444";
+
+                    } finally {
+
+                        submitBtn.disabled =
+                            false;
+
+                        submitBtn.textContent =
+                            "Send Message";
+
+                    }
+
                 }
-            )
+            );
 
-            .then(function (response) {
+        }
 
-                console.log(
-                    "EmailJS SUCCESS:",
-                    response.status,
-                    response.text
-                );
-
-
-                status.innerText =
-                    "✓ Message sent successfully!";
-
-                status.style.color =
-                    "#22c55e";
-
-
-                contactForm.reset();
-
-
-                submitBtn.disabled = false;
-
-                submitBtn.innerText =
-                    "Send Message";
-
-
-                setTimeout(function () {
-
-                    status.innerText = "";
-
-                }, 5000);
-
-            })
-            .catch(function (error) {
-
-                console.error(
-                    "EmailJS ERROR:",
-                    error
-                );
-                status.innerText =
-                    "✕ Failed to send message. Please try again.";
-
-                status.style.color =
-                    "#ff4444";
-                submitBtn.disabled = false;
-
-                submitBtn.innerText =
-                    "Send Message";
-
-            });
-        });
     </script>
-    
+
 </body>
+
 </html>
