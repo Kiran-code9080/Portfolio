@@ -1,6 +1,6 @@
 // ==========================================
 // PORTFOLIO JAVASCRIPT
-// Compatible with your current HTML
+// Compatible with current HTML + EmailJS
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     if (typeof AOS !== "undefined") {
+
         AOS.init({
             duration: 1000,
             once: true,
             offset: 120
         });
+
     }
 
 
@@ -32,22 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     if (typeof Typed !== "undefined") {
+
         const typedElement = document.getElementById("typed");
 
         if (typedElement) {
+
             new Typed("#typed", {
+
                 strings: [
-                    "MCA Student",
+                    "MCA Graduate",
                     "Full Stack Developer",
                     "Python Enthusiast",
                     "Problem Solver"
                 ],
+
                 typeSpeed: 50,
                 backSpeed: 30,
-                backDelay: 1000,
+                backDelay: 1200,
                 loop: true
+
             });
+
         }
+
     }
 
 
@@ -56,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     if (header) {
+
         window.addEventListener("scroll", () => {
 
             if (window.scrollY > 50) {
@@ -65,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         });
+
     }
 
 
@@ -121,17 +132,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.scrollY >= sectionTop &&
                 window.scrollY < sectionTop + sectionHeight
             ) {
+
                 currentSection = section.getAttribute("id");
+
             }
 
         });
+
 
         navLinks.forEach(link => {
 
             link.classList.remove("active");
 
-            if (link.getAttribute("href") === `#${currentSection}`) {
+            if (
+                link.getAttribute("href") ===
+                `#${currentSection}`
+            ) {
+
                 link.classList.add("active");
+
             }
 
         });
@@ -140,10 +159,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==========================================
-    // PROJECT CARD HOVER / CLICK EFFECT
+    // PROJECT CARD CLICK EFFECT
     // ==========================================
 
-    const projectCards = document.querySelectorAll(".project-card");
+    const projectCards =
+        document.querySelectorAll(".project-card");
 
     projectCards.forEach(card => {
 
@@ -166,51 +186,127 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (contactForm) {
 
-        contactForm.addEventListener("submit", function (e) {
+        contactForm.addEventListener("submit", async function (e) {
 
             e.preventDefault();
 
+
+            // --------------------------------------
+            // EMAILJS CONFIGURATION
+            // --------------------------------------
+
             const SERVICE_ID = "service_753xgur";
             const TEMPLATE_ID = "template_edmn3me";
-            const PUBLIC_KEY = "A8GY5Y4s-MORVV50t";
+
+
+            // --------------------------------------
+            // STATUS
+            // --------------------------------------
 
             if (formStatus) {
+
                 formStatus.innerText = "Sending...";
                 formStatus.style.color = "var(--primary)";
+
             }
 
-            // Prevent multiple submissions
-            const submitButton = contactForm.querySelector(
-                'button[type="submit"]'
-            );
+
+            // --------------------------------------
+            // SUBMIT BUTTON
+            // --------------------------------------
+
+            const submitButton =
+                contactForm.querySelector(
+                    'button[type="submit"]'
+                );
+
 
             if (submitButton) {
+
                 submitButton.disabled = true;
                 submitButton.innerText = "Sending...";
+
             }
 
 
-            emailjs.sendForm(
-                SERVICE_ID,
-                TEMPLATE_ID,
-                contactForm,
-                PUBLIC_KEY
-            )
+            // --------------------------------------
+            // CHECK EMAILJS
+            // --------------------------------------
 
-            .then(() => {
+            if (typeof emailjs === "undefined") {
+
+                console.error(
+                    "EmailJS library is not loaded."
+                );
 
                 if (formStatus) {
+
+                    formStatus.innerText =
+                        "Email service is not available.";
+
+                    formStatus.style.color = "#ef4444";
+
+                }
+
+                if (submitButton) {
+
+                    submitButton.disabled = false;
+                    submitButton.innerText =
+                        "Send Message";
+
+                }
+
+                return;
+
+            }
+
+
+            // --------------------------------------
+            // SEND EMAIL
+            // --------------------------------------
+
+            try {
+
+                const response = await emailjs.sendForm(
+                    SERVICE_ID,
+                    TEMPLATE_ID,
+                    contactForm
+                );
+
+
+                // ----------------------------------
+                // SUCCESS
+                // ----------------------------------
+
+                console.log(
+                    "EmailJS SUCCESS:",
+                    response.status,
+                    response.text
+                );
+
+
+                if (formStatus) {
+
                     formStatus.innerText =
                         "✓ Message sent successfully!";
-                    formStatus.style.color = "#22c55e";
+
+                    formStatus.style.color =
+                        "#22c55e";
+
                 }
+
 
                 contactForm.reset();
 
+
                 if (submitButton) {
+
                     submitButton.disabled = false;
-                    submitButton.innerText = "Send Message";
+                    submitButton.innerText =
+                        "Send Message";
+
                 }
+
 
                 setTimeout(() => {
 
@@ -218,24 +314,85 @@ document.addEventListener("DOMContentLoaded", () => {
                         formStatus.innerText = "";
                     }
 
-                }, 4000);
+                }, 5000);
 
-            })
 
-            .catch((error) => {
+            } catch (error) {
 
-                console.error("EmailJS Error:", error);
+                // ----------------------------------
+                // ERROR DETAILS
+                // ----------------------------------
+
+                console.error(
+                    "========== EMAILJS ERROR =========="
+                );
+
+                console.error(
+                    "Error object:",
+                    error
+                );
+
+                console.error(
+                    "Status:",
+                    error?.status
+                );
+
+                console.error(
+                    "Text:",
+                    error?.text
+                );
+
+                console.error(
+                    "Message:",
+                    error?.message
+                );
+
+                console.error(
+                    "Name:",
+                    error?.name
+                );
+
+                console.error(
+                    "==================================="
+                );
+
+
+                // ----------------------------------
+                // USER MESSAGE
+                // ----------------------------------
 
                 if (formStatus) {
-                    formStatus.innerText =
-                        "✗ Failed to send message. Please try again.";
-                    formStatus.style.color = "#ef4444";
+
+                    if (error?.status === 412) {
+
+                        formStatus.innerText =
+                            "✗ EmailJS configuration error. Please check your EmailJS service/template.";
+
+                    } else {
+
+                        formStatus.innerText =
+                            "✗ Failed to send message. Please try again.";
+
+                    }
+
+                    formStatus.style.color =
+                        "#ef4444";
+
                 }
 
+
+                // ----------------------------------
+                // ENABLE BUTTON
+                // ----------------------------------
+
                 if (submitButton) {
+
                     submitButton.disabled = false;
-                    submitButton.innerText = "Send Message";
+                    submitButton.innerText =
+                        "Send Message";
+
                 }
+
 
                 setTimeout(() => {
 
@@ -243,9 +400,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         formStatus.innerText = "";
                     }
 
-                }, 4000);
+                }, 6000);
 
-            });
+            }
 
         });
 
@@ -253,48 +410,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==========================================
-    // SCROLL REVEAL FOR PROJECT CARDS
+    // PROJECT SCROLL REVEAL
     // ==========================================
 
-    const projectObserver = new IntersectionObserver(
-        (entries) => {
+    if ("IntersectionObserver" in window) {
 
-            entries.forEach(entry => {
+        const projectObserver =
+            new IntersectionObserver(
 
-                if (entry.isIntersecting) {
+                (entries) => {
 
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
+                    entries.forEach(entry => {
 
-                    projectObserver.unobserve(entry.target);
+                        if (entry.isIntersecting) {
 
+                            entry.target.style.opacity = "1";
+
+                            entry.target.style.transform =
+                                "translateY(0)";
+
+                            projectObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.15
                 }
 
-            });
-
-        },
-        {
-            threshold: 0.15
-        }
-    );
+            );
 
 
-    projectCards.forEach(card => {
+        projectCards.forEach(card => {
 
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px)";
-        card.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+            card.style.opacity = "0";
 
-        projectObserver.observe(card);
+            card.style.transform =
+                "translateY(30px)";
 
-    });
+            card.style.transition =
+                "opacity 0.7s ease, transform 0.7s ease";
+
+            projectObserver.observe(card);
+
+        });
+
+    }
+
+
+    // ==========================================
+    // INITIAL HEADER STATE
+    // ==========================================
+
+    if (header && window.scrollY > 50) {
+
+        header.classList.add("scrolled");
+
+    }
 
 
     // ==========================================
     // CONSOLE MESSAGE
     // ==========================================
 
-    console.log("Portfolio JavaScript loaded successfully.");
-    console.log("Welcome to Kiran A.'s Portfolio!");
+    console.log(
+        "Portfolio JavaScript loaded successfully."
+    );
+
+    console.log(
+        "EmailJS contact form initialized."
+    );
 
 });
