@@ -1,0 +1,19 @@
+{
+  "name": "kiran-portfolio",
+  "version": "1.0.0",
+  "description": "Personal Portfolio Website for Kiran A. (MCA Student & Full Stack Developer)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "mca",
+    "web-developer",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Kiran A.",
+  "license": "MIT"
+}
