@@ -157,6 +157,12 @@
             margin-bottom: 30px;
         }
 
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         /* ================= ABOUT ================= */
 
         .about-container {
@@ -200,6 +206,52 @@
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 10px;
+        }
+
+        /* ================= CERTIFICATIONS ================= */
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cert-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .cert-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .cert-link:hover {
+            color: white;
         }
 
         /* ================= PROJECTS ================= */
@@ -283,11 +335,27 @@
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn:hover {
             background: white;
             transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #000;
         }
 
         .btn:disabled {
@@ -343,6 +411,7 @@
             <a href="#home">Home</a>
             <a href="#about">Education</a>
             <a href="#skills">Expertise</a>
+            <a href="#certifications">Certifications</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -381,9 +450,16 @@
                 <span id="typed"></span>
             </div>
 
-            <a href="#projects" class="btn">
-                View My Portfolio
-            </a>
+            <div class="hero-btns">
+                <a href="#projects" class="btn">
+                    View My Portfolio
+                </a>
+                
+                <!-- Resume Download Option -->
+                <a href="file:///C:/Users/FSBIT1970/Downloads/kiran.pdf" download="kiran.pdf" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-file-download"></i> Download Resume
+                </a>
+            </div>
 
         </div>
 
@@ -549,9 +625,89 @@
     </section>
 
 
+    <!-- ================= CERTIFICATIONS ================= -->
+
+    <section id="certifications">
+
+        <h2 class="section-title">
+            My <span>Certifications</span>
+        </h2>
+
+        <div class="cert-grid">
+
+            <!-- Certificate 1 -->
+            <div class="cert-card" data-aos="fade-up">
+                <div>
+                    <i class="fas fa-laptop-code cert-icon"></i>
+                    <h3 style="margin-bottom: 10px;">Digital 101 Journey</h3>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">FutureSkills Prime</p>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Acquired essential foundational knowledge in key emerging technologies and digital transformation skills.</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1OslRUwE6RPvVF_CsQZSvhTM_fPDdnF_l/view?usp=drive_link" target="_blank" class="cert-link">
+                    View Certificate <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <!-- Certificate 2 -->
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <i class="fas fa-chart-bar cert-icon"></i>
+                    <h3 style="margin-bottom: 10px;">Data Processing and Visualisation</h3>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">Accenture (FutureSkills Prime - AI ASCEND)</p>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Level 2 - AI Ready: Mastered data handling, cleaning, and complex visualization techniques.</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1gMrUWMuHgDtrTlQjVNUo4CBoaUxNC6Hj/view?usp=sharing" target="_blank" class="cert-link">
+                    View Certificate <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <!-- Certificate 3 -->
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                <div>
+                    <i class="fas fa-database cert-icon"></i>
+                    <h3 style="margin-bottom: 10px;">Acquiring Data</h3>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">Accenture (FutureSkills Prime - AI ASCEND)</p>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Level 1 - AI Fundamentals: Successfully completed modules on data collection strategies and storage principles.</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1PBSy4f4jmFL1IhIOQtZFTnaBuOrw48b0/view?usp=drive_link" target="_blank" class="cert-link">
+                    View Certificate <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <!-- Certificate 4 (New) -->
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                <div>
+                    <i class="fas fa-brain cert-icon"></i>
+                    <h3 style="margin-bottom: 10px;">Data Science using Python</h3>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">Networkz Systems | Dec 2024</p>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Participated and successfully completed training in data analysis and machine learning fundamentals using Python.</p>
+                </div>
+                <a href="#" target="_blank" class="cert-link">
+                    View Certificate <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <!-- Certificate 5 (New) -->
+            <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+                <div>
+                    <i class="fab fa-python cert-icon"></i>
+                    <h3 style="margin-bottom: 10px;">Concepts on Basics Python</h3>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">April 2025</p>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Participated and successfully completed foundational programming principles, syntax, and object-oriented concepts in Python.</p>
+                </div>
+                <a href="#" target="_blank" class="cert-link">
+                    View Certificate <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
     <!-- ================= PROJECTS ================= -->
 
-    <section id="projects">
+    <section id="projects" style="background: rgba(255,255,255,0.01);">
 
         <h2 class="section-title">
             Project <span>Highlights</span>
@@ -1000,13 +1156,6 @@
 
                     try {
 
-                        /*
-                         * EmailJS Browser SDK v4
-                         *
-                         * Public key was already
-                         * initialized above.
-                         */
-
                         const response =
                             await emailjs.sendForm(
                                 "service_753xgur",
@@ -1037,24 +1186,6 @@
                             "EmailJS ERROR:",
                             error
                         );
-
-
-                        console.error(
-                            "Status:",
-                            error?.status
-                        );
-
-
-                        console.error(
-                            "Text:",
-                            error?.text
-                        );
-
-
-                        /*
-                         * Display actual EmailJS
-                         * error instead of hiding it.
-                         */
 
                         if (error?.text) {
 
